@@ -1,0 +1,14 @@
+<section fxLayout fxLayoutAlign="center" >
+    <form (ngSubmit)="onSubmit()" [formGroup]="form" fxLayout="column" fxFlex="600px" fxFlex.xs="100%">
+        <mat-form-field>
+            <input type="email" formControlName="email" matInput placeholder="Email" required email>
+        </mat-form-field>
+        <mat-form-field>
+            <input type="password" formControlName="password" matInput placeholder="password" required minlength="6">
+        </mat-form-field>
+        <div fxFlexLayout fxLayoutAlign="center">
+            <button class="btn btn-primary" type="submit" >Login</button>
+        </div>
+        
+    </form>
+</section>

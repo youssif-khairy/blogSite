@@ -1,0 +1,11 @@
+span{
+    flex: 1 1 auto;
+}
+ul{
+    list-style: none;
+    align-self: flex-end;
+    a:hover{
+        color: grey;
+        text-decoration: none;
+    }
+}

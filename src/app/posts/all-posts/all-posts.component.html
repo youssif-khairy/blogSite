@@ -1,0 +1,17 @@
+<section fxLayout fxLayoutAlign="center">
+    <mat-accordion fxFlex="600px" fxFlex.xs="100%" > 
+        <mat-expansion-panel *ngFor="let post of allPosts$ | async;let i = index">
+          <mat-expansion-panel-header>
+            {{post.title}}
+          </mat-expansion-panel-header>
+          <div class="post-image">
+            <img src="{{post.imagePath}}" alt="{{post.title}}">
+          </div>
+          <p>{{post.content}}</p>
+          <div fxLayout fxLayoutAlign="flex-end">
+            <button (click)="editPost(i)" mat-button color="primary" class="btn btn-primary">Edit</button>
+            <button (click)="deletePost(i)" mat-button color="accent" class="btn btn-danger">Delete</button>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+</section>
