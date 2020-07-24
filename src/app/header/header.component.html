@@ -2,7 +2,7 @@
     <span>My Messages</span>
     <ul fxLayout fxLayoutAlign="center flex-end" fxLayoutGap="15px" fxHide.xs>
         <li *ngIf="!is_auth">
-            <a routerLink="/">Login</a>
+            <a routerLink="/">{{'Login' | translate}}</a>
         </li>
         <li *ngIf="!is_auth">
             <a routerLink="/signup">Signup</a>

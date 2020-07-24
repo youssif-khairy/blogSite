@@ -1,4 +1,5 @@
-<section fxLayout fxLayoutAlign="center" >
+<section fxLayout fxLayoutAlign="center">
+
     <form (ngSubmit)="onSubmit()" [formGroup]="form" fxLayout="column" fxFlex="600px" fxFlex.xs="100%">
         <mat-form-field>
             <input type="email" formControlName="email" matInput placeholder="Email" required email>
@@ -7,8 +8,35 @@
             <input type="password" formControlName="password" matInput placeholder="password" required minlength="6">
         </mat-form-field>
         <div fxFlexLayout fxLayoutAlign="center">
-            <button class="btn btn-primary" type="submit" >Login</button>
+            <button class="btn btn-primary" type="submit">Login</button>
         </div>
-        
+
+        <h1>{{'text' | translate}}</h1>
+        <button type="button" mat-raised-button (click)="onLanguageChange()">Change language</button>
+        <button type="button" class="btn btn-primary">Facebook Login</button>
+        <!-- <button mat-raised-button (click)="checkout($event)">
+
+            Buy for ${{ amount }}.00
+
+        </button> -->
+
+    </form>
+
+</section>
+
+<section style="width: 600px; margin-left: 20px;">
+    <form (submit)="handleForm($event)">
+
+
+        <div #cardElement>
+          <!-- A Stripe Element will be inserted here. -->
+        </div>
+    
+    
+        <!-- Used to display Element errors. -->
+        <p>{{ cardErrors }}</p>
+    
+    
+      <button >Buy for ${{ amount / 100 }}.00</button>
     </form>
 </section>

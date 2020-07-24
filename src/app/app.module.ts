@@ -1,6 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
+import { HttpClientModule, HTTP_INTERCEPTORS, HttpClient } from "@angular/common/http";
+
+import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,13 +17,18 @@ import { reducers } from './app.reducer';
 import { AuthModule } from './auth/auth.module';
 import { AuthInterceptor } from './interceptors/auth-interceptors';
 import { ErrorInterceptor } from './interceptors/error-interceptor';
+import { ErrorComponent } from './error/error.component';
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
@@ -31,9 +39,18 @@ import { ErrorInterceptor } from './interceptors/error-interceptor';
     StoreModule.forRoot(reducers),
     HttpClientModule,
     AuthModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      },
+      isolate: false
+    })
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
   { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents:[ErrorComponent],
 })
 export class AppModule { }

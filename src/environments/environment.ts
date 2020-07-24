@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  BACKEND_URL: 'https://blog-website-api.herokuapp.com/api/'
+  BACKEND_URL: 'http://localhost:3000/api/'
+  //BACKEND_URL: 'https://blog-website-api.herokuapp.com/api/'
 };
 
 /*
